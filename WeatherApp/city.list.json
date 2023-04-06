@@ -1,0 +1,172 @@
+[
+    {
+        "id": 616635,
+        "name": "Gyumri",
+        "state": "",
+        "country": "AM",
+        "coord": {
+            "lon": 43.84528,
+            "lat": 40.794201
+        }
+    },
+    {
+        "id": 616051,
+        "name": "Yerevan",
+        "state": "",
+        "country": "AM",
+        "coord": {
+            "lon": 44.5,
+            "lat": 40.183331
+        }
+    },
+    {
+        "id": 5202009,
+        "name": "Moscow",
+        "state": "PA",
+        "country": "US",
+        "coord": {
+            "lon": -75.518517,
+            "lat": 41.33675
+        }
+    },
+    {
+        "id": 498817,
+        "name": "Saint Petersburg",
+        "state": "",
+        "country": "RU",
+        "coord": {
+            "lon": 30.264168,
+            "lat": 59.894444
+        }
+    },
+    {
+        "id": 5128638,
+        "name": "New York",
+        "state": "NY",
+        "country": "US",
+        "coord": {
+            "lon": -75.499901,
+            "lat": 43.000351
+        }
+    },
+    {
+        "id": 5182733,
+        "name": "California",
+        "state": "PA",
+        "country": "US",
+        "coord": {
+            "lon": -79.891708,
+            "lat": 40.065632
+        }
+    },
+    {
+        "id": 5218069,
+        "name": "Washington",
+        "state": "PA",
+        "country": "US",
+        "coord": {
+            "lon": -80.24617,
+            "lat": 40.173962
+        }
+    },
+    {
+        "id": 3169070,
+        "name": "Rome",
+        "state": "",
+        "country": "IT",
+        "coord": {
+            "lon": 12.4839,
+            "lat": 41.894741
+        }
+    },
+    {
+        "id": 3173435,
+        "name": "Milan",
+        "state": "",
+        "country": "IT",
+        "coord": {
+            "lon": 9.18951,
+            "lat": 45.464272
+        }
+    },
+    {
+        "id": 3176959,
+        "name": "Florence",
+        "state": "",
+        "country": "IT",
+        "coord": {
+            "lon": 11.25,
+            "lat": 43.76667
+        }
+    },
+    {
+        "id": 3675707,
+        "name": "Madrid",
+        "state": "",
+        "country": "CO",
+        "coord": {
+            "lon": -74.264191,
+            "lat": 4.73244
+        }
+    },
+    {
+        "id": 6356055,
+        "name": "Barcelona",
+        "state": "",
+        "country": "ES",
+        "coord": {
+            "lon": 2.12804,
+            "lat": 41.399422
+        }
+    },
+    {
+        "id": 4119617,
+        "name": "London",
+        "state": "AR",
+        "country": "US",
+        "coord": {
+            "lon": -93.25296,
+            "lat": 35.328972
+        }
+    },
+    {
+        "id": 4207625,
+        "name": "Manchester",
+        "state": "GA",
+        "country": "US",
+        "coord": {
+            "lon": -84.619926,
+            "lat": 32.859852
+        }
+    },
+    {
+        "id": 3067696,
+        "name": "Prague",
+        "state": "",
+        "country": "CZ",
+        "coord": {
+            "lon": 14.42076,
+            "lat": 50.088039
+        }
+    },
+    {
+        "id": 756135,
+        "name": "Warsaw",
+        "state": "",
+        "country": "PL",
+        "coord": {
+            "lon": 21.01178,
+            "lat": 52.229771
+        }
+    },
+    {
+        "id": 658225,
+        "name": "Helsinki",
+        "state": "",
+        "country": "FI",
+        "coord": {
+            "lon": 24.93545,
+            "lat": 60.16952
+        }
+    }
+]
