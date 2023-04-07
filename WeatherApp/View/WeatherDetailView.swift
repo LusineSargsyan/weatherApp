@@ -25,6 +25,7 @@ struct WeatherDetailView: View {
                 EmptyView()
             }
         }
+        .navigationTitle(viewModel.detailModel.weather?.name ?? "")
         .alert(item: $viewModel.alertItem)
         .onAppear {
             viewModel.getWeatherDetails()
@@ -53,53 +54,46 @@ extension View {
 }
 
 struct DetailContentViewModel {
+    @AppStorage("CurrentDate", store: .standard) var currentDate = ""
+
     var state: DetailScreenState
-    var weather: WeatherResponse? {
-        didSet {
-            if let weather = weather {
-                self.humidity = "\(weather.humidity) %"
-                self.temp = "\(weather.temp) °C"
-                self.maxTemp = "\(weather.maxTemp) °C"
-                self.minTemp = "\(weather.minTemp) °C"
-                self.feelsLike = "\(weather.feelsLike) °C"
-                self.windSpeed = "\(weather.windSpeed) m/sec"
-            }
-        }
-    }
     var image: UIImage?
+    var description: String = "   "
     var temp: String = "   "
     var maxTemp: String = "   "
     var minTemp: String = "   "
     var humidity: String = "   "
     var windSpeed: String = "   "
     var feelsLike: String = "   "
+    var weather: WeatherResponse? {
+        didSet {
+            if let weather = weather {
+                if let desc = weather.weather?.desc {
+                    self.description = desc.capitalized
+                }
+                self.humidity = "\(weather.humidity) %"
+                self.temp = "\(weather.temp) °C"
+                self.maxTemp = "\(weather.maxTemp) °C"
+                self.minTemp = "\(weather.minTemp) °C"
+                self.feelsLike = "\(weather.feelsLike) °C"
+                self.windSpeed = "\(weather.windSpeed) m/s"
+            }
+        }
+    }
 
     init(state: DetailScreenState) {
         self.state = state
     }
 }
 
-struct DetailContentView: View {
-    private var viewModel: DetailContentViewModel
+struct MoreInfoViewModel {
+    let minTemp: String
+    let maxTemp: String
+    let humidity: String
+    let windSpeed: String
+}
 
-    init(viewModel: DetailContentViewModel) {
-        self.viewModel = viewModel
-    }
-
-    var body: some View {
-        VStack {
-            Text(viewModel.temp)
-                .padding(.top, 60)
-                .redacted(reason: viewModel.state == .loading ? .placeholder : [])
-
-            Text(viewModel.feelsLike)
-
-            if let image = viewModel.image {
-                Image(uiImage: image)
-            }
-
-            Text(viewModel.state.description)
-                .padding(.bottom, 20)
-        }
-    }
+struct InfoViewModel {
+    let title: String
+    let desc: String
 }

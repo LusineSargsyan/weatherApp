@@ -14,6 +14,9 @@ enum GenericError: Error, CustomDebugStringConvertible {
     case requestFailed(error: Error)
     case localResourceNotFound
     case emptyData
+    case realmWriteFailed
+    case realmReadFailed
+    case realmUpdateFailed
 
     var debugDescription: String {
         switch self {
@@ -29,6 +32,12 @@ enum GenericError: Error, CustomDebugStringConvertible {
             return "Local resource not founded"
         case .emptyData:
             return "Data is empty"
+        case .realmWriteFailed:
+            return "Write failed"
+        case .realmReadFailed:
+            return "Read failed"
+        case .realmUpdateFailed:
+            return "Update failed"
         }
     }
 }

@@ -8,23 +8,13 @@
 import UIKit
 import Combine
 import Reachability
+import SwiftUI
 
 enum DetailScreenState {
     case empty
     case dataFromLocalStorage
     case dataFromNetwork
     case loading
-
-    var description: String {
-        switch self {
-        case .empty, .loading:
-            return ""
-        case .dataFromLocalStorage:
-            return "local"
-        case .dataFromNetwork:
-            return "network"
-        }
-    }
 }
 
 struct WeatherDetailInputs {
@@ -43,6 +33,8 @@ struct WeatherDetailInputs {
 
 final class WeatherDetailViewModel: ViewModel<WeatherDetailInputs> {
     private let cityName: String
+    @AppStorage("CurrentDate", store: .standard) var currentDate = ""
+
     @Published var state: DetailScreenState? {
         didSet {
             if let state {
@@ -93,7 +85,7 @@ final class WeatherDetailViewModel: ViewModel<WeatherDetailInputs> {
                     detailModel.image = UIImage(data: data)
                 }
             } catch {
-                // TODO: ERROR handling
+                print(GenericError.realmReadFailed)
             }
         } else {
             execute(service: inputs.service.fetchweather(param: WeatherParameter(city: cityName))) { [weak self] weather in
@@ -102,9 +94,9 @@ final class WeatherDetailViewModel: ViewModel<WeatherDetailInputs> {
                 do {
                     try self?.inputs.weatherRealmService.write(object: weather)
                 } catch {
-                    // TODO: ERROR handling
+                    print(GenericError.realmWriteFailed)
                 }
-
+                self?.updateCurrentDate()
                 self?.detailModel.weather = weather
                 self?.dowloadImage(with: weather.weather?.icon ?? "") { data in
                     self?.detailModel.image = UIImage(data: data)
@@ -112,10 +104,21 @@ final class WeatherDetailViewModel: ViewModel<WeatherDetailInputs> {
                     do {
                         try self?.inputs.weatherRealmService.update(object: weather, value: data, keyPath: \.iconData)
                     } catch {
-                        // TODO: ERROR handling
+                        print(GenericError.realmUpdateFailed)
                     }
                 }
             }
         }
+    }
+
+    func updateCurrentDate() {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale.current
+        let currentUpdateDate = dateFormatter.string(from: date)
+
+        currentDate = currentUpdateDate
     }
 }

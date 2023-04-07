@@ -25,9 +25,9 @@ enum ManagerProvider {
                                    responseValidator: ResponseValidating = URLResponseValidator(),
                                    errorHandler: ErrorHandling = ErrorHandler()) -> NetworkDataFetching {
         return NetworkDataFetcher(networkManager: networkManager,
-                           parser: parser,
-                           responseValidator: responseValidator,
-                           errorHandler: errorHandler)
+                                  parser: parser,
+                                  responseValidator: responseValidator,
+                                  errorHandler: errorHandler)
     }
 }
 
@@ -63,14 +63,23 @@ struct CityListView: View {
     @StateObject var viewModel = CityListViewModel(inputs: CityListInputs(service: ServiceProvider.cityList))
 
     var body: some View {
-        NavigationStack {
-            List(viewModel.cityNames, id: \.self) { cityName in
-                NavigationLink {
-                    WeatherDetailView(viewModel: ViewModelProvider.weatherDetail(cityName: cityName))
-                } label: {
-                    Text(cityName)
+        NavigationView {
+            ZStack {
+                List(viewModel.cityNames, id: \.self) { cityName in
+                    NavigationLink {
+                        WeatherDetailView(viewModel: ViewModelProvider.weatherDetail(cityName: cityName))
+                    } label: {
+                        Text(cityName)
+                            .foregroundColor(.primary)
+                            .font(.system(size: 20))
+                    }
                 }
+                .background(Color.clear)
+                .listStyle(.plain)
             }
+            .frame(maxWidth: .infinity)
+            .padding(.top, 20)
+            .navigationTitle("City List")
         }
         .alert(item: $viewModel.alertItem)
         .onAppear {

@@ -11,10 +11,11 @@ struct EmptyDetailView: View {
     var body: some View {
         VStack {
             Image("sad_cloud")
-            Text("Empty data")
+
+            Text("Weather info not found")
+                .font(.system(size: 18))
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
-        .background(Color.gray.opacity(0.3))
     }
 }
