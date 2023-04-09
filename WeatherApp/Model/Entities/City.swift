@@ -38,5 +38,14 @@ struct City: Decodable {
         self.country = try container.decode(String.self, forKey: .country)
         self.coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
     }
-}
 
+    init(id: Int,
+         name: String,
+         country: String,
+         coordinates: CLLocationCoordinate2D) {
+        self.id = id
+        self.name = name
+        self.country = country
+        self.coordinates = coordinates
+    }
+}

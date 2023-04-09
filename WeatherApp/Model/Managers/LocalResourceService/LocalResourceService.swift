@@ -9,13 +9,13 @@ import Foundation
 import Combine
 
 class LocalResourceService {
-    private let NetworkDataFetcher: LocalResourceDataFetching
+    private let localResourceDataFetcher: LocalResourceDataFetching
 
-    init(NetworkDataFetcher: LocalResourceDataFetching) {
-        self.NetworkDataFetcher = NetworkDataFetcher
+    init(localResourceDataFetcher: LocalResourceDataFetching) {
+        self.localResourceDataFetcher = localResourceDataFetcher
     }
 
     func execute<T: Decodable>(localResource: LocalResourced) -> AnyPublisher<T, GenericError> {
-        return NetworkDataFetcher.fetchData(localResource: localResource)
+        return localResourceDataFetcher.fetchData(localResource: localResource)
     }
 }

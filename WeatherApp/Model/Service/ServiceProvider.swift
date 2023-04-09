@@ -10,11 +10,11 @@ import RealmSwift
 
 enum ServiceProvider {
     static var cityList: CityListService {
-        return CityListService(NetworkDataFetcher: ManagerProvider.localResourceDataFetcher())
+        return CityListService(localResourceDataFetcher: ManagerProvider.localResourceDataFetcher())
     }
 
     static var weather: WeatherWebService {
-        return WeatherWebService(NetworkDataFetcher: ManagerProvider.networkDataFetcher())
+        return WeatherWebService(networkDataFetcher: ManagerProvider.networkDataFetcher())
     }
 
     static func download(networking: Networking = NetworkManager()) -> DownloadService {

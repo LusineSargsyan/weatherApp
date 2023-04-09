@@ -8,9 +8,9 @@
 import Foundation
 
 struct CityListInputs {
-    let service: CityListService
+    let service: CityListServicing
 
-    init(service: CityListService) {
+    init(service: CityListServicing) {
         self.service = service
     }
 }

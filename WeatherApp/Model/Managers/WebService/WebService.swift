@@ -9,13 +9,13 @@ import Foundation
 import Combine
 
 class WebService {
-    private let NetworkDataFetcher: NetworkDataFetching
+    private let networkDataFetcher: NetworkDataFetching
 
-    init(NetworkDataFetcher: NetworkDataFetching) {
-        self.NetworkDataFetcher = NetworkDataFetcher
+    init(networkDataFetcher: NetworkDataFetching) {
+        self.networkDataFetcher = networkDataFetcher
     }
 
     func execute<T: Decodable>(routing: Routing) -> AnyPublisher<T, GenericError> {
-        return NetworkDataFetcher.fetchData(routing: routing)
+        return networkDataFetcher.fetchData(routing: routing)
     }
 }
