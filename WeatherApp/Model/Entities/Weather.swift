@@ -61,6 +61,28 @@ import Realm
     required override init() {
         super.init()
     }
+
+    init(id: Int,
+         weather: Weather?,
+         temp: Double,
+         maxTemp: Double,
+         minTemp: Double,
+         humidity: Double,
+         windSpeed: Double,
+         iconData: Data?,
+         name: String,
+         feelsLike: Double) {
+        self.id = id
+        self.weather = weather
+        self.temp = temp
+        self.maxTemp = maxTemp
+        self.minTemp = minTemp
+        self.humidity = humidity
+        self.windSpeed = windSpeed
+        self.iconData = iconData
+        self.name = name
+        self.feelsLike = feelsLike
+    }
 }
 
 @objcMembers final class Weather: Object, Decodable {
@@ -90,5 +112,15 @@ import Realm
 
     required override init() {
         super.init()
+    }
+
+    init(id: Int,
+         desc: String,
+         icon: String,
+         main: String) {
+        self.id = id
+        self.desc = desc
+        self.icon = icon
+        self.main = main
     }
 }

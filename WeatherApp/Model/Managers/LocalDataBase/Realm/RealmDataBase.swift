@@ -25,7 +25,7 @@ struct RealmDataBase<T: Object>: LocalDataBased {
     }
 
     func read() throws -> [T] {
-        guard let realm = try? Realm() else {
+        guard let realm = try? Realm(configuration: configuration) else {
             throw GenericError.realmReadFailed
         }
 
@@ -45,7 +45,7 @@ struct RealmDataBase<T: Object>: LocalDataBased {
     }
 
     func update<V>(object: T, value: V, keyPath: WritableKeyPath<T, V>) throws {
-        guard let realm = try? Realm() else { return }
+        guard let realm = try? Realm(configuration: configuration) else { return }
 
         var obj = object
 

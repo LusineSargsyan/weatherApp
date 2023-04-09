@@ -17,7 +17,8 @@ enum ViewModelProvider {
     static func weatherDetail(cityName: String) -> WeatherDetailViewModel {
         let weatherDetailInputs = WeatherDetailInputs(service: ServiceProvider.weather,
                                                       weatherRealmService: ServiceProvider.realmService(),
-                                                      downloadService: ServiceProvider.download())
+                                                      downloadService: ServiceProvider.weatherIcon(),
+                                                      reachibility: ServiceProvider.reachableService)
 
         return WeatherDetailViewModel(cityName: cityName, inputs: weatherDetailInputs)
     }

@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class WeatherIconDownloadService: DownloadService {
+final class WeatherIconDownloadService: DownloadService, WeatherIconDownloadServicing {
     func downloadWeatherIcon(routing: WeatherIconParameter) -> AnyPublisher<Data, GenericError> {
         return download(routing: routing)
     }

@@ -9,16 +9,20 @@ import Foundation
 import RealmSwift
 
 enum ServiceProvider {
-    static var cityList: CityListService {
+    static var cityList: CityListServicing {
         return CityListService(localResourceDataFetcher: ManagerProvider.localResourceDataFetcher())
     }
 
-    static var weather: WeatherWebService {
+    static var weather: WeatherServicing {
         return WeatherWebService(networkDataFetcher: ManagerProvider.networkDataFetcher())
     }
 
-    static func download(networking: Networking = NetworkManager()) -> DownloadService {
-        return DownloadService(networking: networking)
+    static var reachableService: Reachable {
+        return ReachableService()
+    }
+
+    static func weatherIcon(networking: Networking = NetworkManager()) -> WeatherIconDownloadServicing {
+        return WeatherIconDownloadService(networking: networking)
     }
 
     static func realmService<T: Object>() -> RealmService<T> {

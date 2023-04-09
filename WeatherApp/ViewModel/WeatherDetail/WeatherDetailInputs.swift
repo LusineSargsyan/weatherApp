@@ -8,17 +8,31 @@
 import Foundation
 import Reachability
 
-struct WeatherDetailInputs {
-    let service: WeatherWebService
-    let weatherRealmService: RealmService<WeatherResponse>
-    let downloadService: DownloadService
-    var reachibility: Reachability? { return try? Reachability() } // TODO: create a ReachableService please
+protocol Reachable {
+    var isConnected: Bool { get }
+}
 
-    init(service: WeatherWebService,
+struct ReachableService: Reachable {
+    var isConnected: Bool {
+        guard let reachibility = try? Reachability() else { return false }
+
+        return reachibility.connection != .unavailable
+    }
+}
+
+class WeatherDetailInputs {
+    let service: WeatherServicing
+    let weatherRealmService: RealmService<WeatherResponse>
+    let downloadService: WeatherIconDownloadServicing
+    let reachibility: Reachable
+
+    init(service: WeatherServicing,
          weatherRealmService: RealmService<WeatherResponse>,
-         downloadService: DownloadService) {
+         downloadService: WeatherIconDownloadServicing,
+         reachibility: Reachable) {
         self.service = service
         self.weatherRealmService = weatherRealmService
         self.downloadService = downloadService
+        self.reachibility = reachibility
     }
 }

@@ -36,7 +36,7 @@ final class WeatherDetailViewModel: ViewModel<WeatherDetailInputs> {
     }
 
     func getWeatherDetails() {
-        if inputs.reachibility?.connection == .unavailable {
+        if !inputs.reachibility.isConnected {
             do {
                 try readFromRealm()
             } catch {
@@ -62,19 +62,6 @@ final class WeatherDetailViewModel: ViewModel<WeatherDetailInputs> {
         }
     }
 
-    private func dowloadImage(with iconName: String, complition: @escaping (Data) -> Void) {
-        inputs.downloadService.download(routing: WeatherIconParameter(iconName: iconName))
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] value in
-                if case .failure = value {
-                    self?.detailModel.image = UIImage(named: "placeholder")
-                }
-            } receiveValue: { data in
-                complition(data)
-            }
-            .store(in: &subscriptions)
-    }
-
     private func executeFromNetwork() {
         execute(service: inputs.service.fetchWeather(param: WeatherParameter(city: cityName))) { [weak self] weather in
             self?.state = .success(weather: weather)
@@ -96,6 +83,19 @@ final class WeatherDetailViewModel: ViewModel<WeatherDetailInputs> {
                 }
             }
         }
+    }
+
+    private func dowloadImage(with iconName: String, complition: @escaping (Data) -> Void) {
+        inputs.downloadService.downloadWeatherIcon(routing: WeatherIconParameter(iconName: iconName))
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] value in
+                if case .failure = value {
+                    self?.detailModel.image = UIImage(named: "placeholder")
+                }
+            } receiveValue: { data in
+                complition(data)
+            }
+            .store(in: &subscriptions)
     }
 
     private func updateCurrentDate() {

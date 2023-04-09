@@ -29,7 +29,7 @@ final class CityListViewModelTests: XCTestCase {
     }
 
     func testGetCityList() {
-        let expectation = XCTestExpectation(description: "CityListTest")
+        let expectation = XCTestExpectation(description: "testGetCityList")
 
         viewModel.$cityNames
             .dropFirst()
