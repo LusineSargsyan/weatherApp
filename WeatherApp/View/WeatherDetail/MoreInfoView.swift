@@ -22,15 +22,22 @@ struct MoreInfoView: View {
                 .font(.system(size: 18, weight: .medium))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 24)
+                .padding(.bottom, 10)
 
             VStack {
-                InfoView(viewModel: InfoViewModel(title: "Min temp", desc: viewModel.minTemp))
-                InfoView(viewModel: InfoViewModel(title: "Max temp", desc: viewModel.maxTemp))
-                InfoView(viewModel: InfoViewModel(title: "Humidity", desc: viewModel.humidity))
-                InfoView(viewModel: InfoViewModel(title: "Wind Speed", desc: viewModel.windSpeed))
+                ForEach(viewModel.dataSource, id: \.title) { item in
+                    InfoView(viewModel: InfoViewModel(title: item.title, value: item.value))
+                }
             }
             .padding(.horizontal, 24)
         }
         .frame(maxWidth: .infinity)
+    }
+}
+
+struct MoreInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+//        MoreInfoView(viewModel: MoreInfoViewModel(weather: WeatherResponse())
+        Color.cyan
     }
 }

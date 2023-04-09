@@ -44,6 +44,7 @@ class ViewModel<T>: ViewModeling, ObservableObject {
     }
 
     func handleError(error: GenericError) {
+        print("❌", String(reflecting: error), terminator: " ")
         alertItem = AlertItem(title: "Oups!", message: "Something went wrong", buttonTitle: "Ok")
     }
 

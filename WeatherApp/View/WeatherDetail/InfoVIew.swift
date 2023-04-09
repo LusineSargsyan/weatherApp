@@ -22,9 +22,16 @@ struct InfoView: View {
 
             Spacer()
 
-            Text(viewModel.desc)
+            Text(viewModel.value)
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(Color.primary)
         }
+    }
+}
+
+struct InfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        InfoView(viewModel: InfoViewModel(title: "title",
+                                          value: "value"))
     }
 }

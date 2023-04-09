@@ -8,14 +8,6 @@
 import Foundation
 import Combine
 
-struct CityListInputs {
-    let service: CityListService
-
-    init(service: CityListService) {
-        self.service = service
-    }
-}
-
 final class CityListViewModel: ViewModel<CityListInputs> {
     @Published var cityNames: [String] = []
 

@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Encoder to encode params in urlRequest's path
+/// Usage in web service parameters `var encoder: ParameterEncoding { ParameterJSONEncoder() }`
 struct ParameterURLEncoder: ParameterEncoding {
     func encode(_ parameters: RequestParam, into urlRequest: inout URLRequest) {
         guard !parameters.isEmpty,

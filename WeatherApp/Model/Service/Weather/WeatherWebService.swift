@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class WeatherWebService: WebService {
-    func fetchweather(param: WeatherParameter) -> AnyPublisher<WeatherResponse, GenericError> {
+    func fetchWeather(param: WeatherParameter) -> AnyPublisher<WeatherResponse, GenericError> {
         return execute(routing: param)
     }
 }

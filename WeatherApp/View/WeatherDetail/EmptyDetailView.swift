@@ -19,3 +19,9 @@ struct EmptyDetailView: View {
         .ignoresSafeArea()
     }
 }
+
+struct EmptyDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        EmptyDetailView()
+    }
+}

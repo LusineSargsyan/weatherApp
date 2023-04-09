@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+
 struct CityParameters: LocalResourced {
     var name: String { return "city.list" }
 }
