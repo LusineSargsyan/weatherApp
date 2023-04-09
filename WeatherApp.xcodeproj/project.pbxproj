@@ -176,8 +176,7 @@
 		16D2904129E38591005F7668 /* ReachableTestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachableTestService.swift; sourceTree = "<group>"; };
 		16D2904229E38591005F7668 /* WeatherDetailTestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDetailTestService.swift; sourceTree = "<group>"; };
 		16D2904629E3859F005F7668 /* WeatherDetailTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDetailTests.swift; sourceTree = "<group>"; };
-		16D2904829E385CB005F7668 /* WeatherApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = WeatherApp.xctestplan; path = ../WeatherApp.xctestplan; sourceTree = "<group>"; };
-		16D2904929E38646005F7668 /* WeatherApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WeatherApp.xctestplan; sourceTree = "<group>"; };
+		16D2904A29E386B3005F7668 /* WeatherApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WeatherApp.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +205,6 @@
 		163B13BA29DCB5A300F1D8E9 = {
 			isa = PBXGroup;
 			children = (
-				16D2904829E385CB005F7668 /* WeatherApp.xctestplan */,
 				163B13C529DCB5A300F1D8E9 /* WeatherApp */,
 				163B13D629DCB5A500F1D8E9 /* WeatherAppTests */,
 				163B13C429DCB5A300F1D8E9 /* Products */,
@@ -251,7 +249,7 @@
 		163B13D629DCB5A500F1D8E9 /* WeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				16D2904929E38646005F7668 /* WeatherApp.xctestplan */,
+				16D2904A29E386B3005F7668 /* WeatherApp.xctestplan */,
 				16D2904629E3859F005F7668 /* WeatherDetailTests.swift */,
 				16D2901329E32AD4005F7668 /* Service */,
 				16D2900C29E32109005F7668 /* CityListViewModelTests.swift */,
